@@ -2,13 +2,13 @@ import { lazy, Suspense } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 
 const FormsScenarioPage = lazy(() => import("./pages/FormsScenarioPage"));
-const MonitoringScenarioPage = lazy(
-  () => import("./pages/MonitoringScenarioPage"),
-);
+const MonitoringSetupPage = lazy(() => import("./pages/MonitoringSetupPage"));
+const PerivioFdPage = lazy(() => import("./pages/PerivioFdPage"));
 const WorkflowScenarioPage = lazy(() => import("./pages/WorkflowScenarioPage"));
 
 const navItems = [
   { path: "/forms", title: "Forms" },
+  { path: "/monitoring-setup", title: "Monitoring Setup" },
   { path: "/monitoring", title: "Monitoring" },
   { path: "/workflow", title: "Workflow" },
 ];
@@ -21,10 +21,16 @@ const scenarios = [
     focus: "폼 밀도와 검증 UX",
   },
   {
+    path: "/monitoring-setup",
+    title: "Monitoring Setup",
+    description: "모니터링 시작, 환자 ID 입력, 임계값 설정 화면을 디자인 시스템별로 비교",
+    focus: "설정 플로우와 터치 입력",
+  },
+  {
     path: "/monitoring",
-    title: "Monitoring Data Table",
-    description: "상태 요약, 진행률, 환자 리스트가 필요한 운영 대시보드",
-    focus: "데이터 가독성과 반복 업무",
+    title: "Perivio FD Monitoring",
+    description: "태아심박동 모니터링 화면을 안전/위험 상태와 디자인 시스템별로 비교",
+    focus: "장비 UI와 디자인 시스템 톤",
   },
   {
     path: "/workflow",
@@ -103,7 +109,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/forms" element={<FormsScenarioPage />} />
-            <Route path="/monitoring" element={<MonitoringScenarioPage />} />
+            <Route path="/monitoring-setup" element={<MonitoringSetupPage />} />
+            <Route path="/monitoring" element={<PerivioFdPage />} />
             <Route path="/workflow" element={<WorkflowScenarioPage />} />
           </Routes>
         </Suspense>
